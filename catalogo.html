@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casual Style - Catálogo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Casual Style</h1>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="simulador.html">Simulador</a>
+      <a href="cadastro.html">Cadastro</a>
+      <a href="sobre.html">Sobre e dúvidas</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Catálogo de produtos</h2>
+
+    <section class="filtros">
+      <button class="filtro" data-categoria="todos">Todos</button>
+      <button class="filtro" data-categoria="camisetas">Camisetas</button>
+      <button class="filtro" data-categoria="calças">Calças</button>
+      <button class="filtro" data-categoria="calçados">Calçados</button>
+    </section>
+
+    <p class="resumo">
+      Itens na tela: <strong id="contador">0</strong> |
+      Total dos itens: <strong id="total">R$ 0,00</strong>
+    </p>
+
+    <section id="lista-produtos" class="lista"></section>
+  </main>
+
+  <footer>
+    <p>Casual Style - Trabalho escolar</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
