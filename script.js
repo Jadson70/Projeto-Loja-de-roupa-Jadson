@@ -124,10 +124,10 @@ function validarFormulario() {
     tudoCerto = false;
   }
 
-  if (isNaN(telefone) || telefone.length < 10 || telefone.length > 11) {
-    document.getElementById("erro-telefone").textContent = "Telefone com 10 ou 11 números.";
-    tudoCerto = false;
-  }
+ if (isNaN(telefone) || telefone.length !== 11) {
+  document.getElementById("erro-telefone").textContent = "Telefone com 11 números (DDD + celular).";
+  tudoCerto = false;
+}
 
   if (cidade === "") {
     document.getElementById("erro-cidade").textContent = "Preencha a cidade.";
