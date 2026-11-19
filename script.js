@@ -55,3 +55,48 @@ if (document.getElementById("lista-produtos")) {
     });
   }
 }
+function calcularTotal(preco, quantidade) {
+  let pares = Math.floor(quantidade / 2);
+  let desconto = pares * preco * 0.2;
+  let total = preco * quantidade - desconto;
+  return { desconto: desconto, total: total };
+}
+
+function preencherSelect() {
+  let select = document.getElementById("item");
+  for (let i = 0; i < produtos.length; i++) {
+    let opcao = document.createElement("option");
+    opcao.value = produtos[i].id;
+    opcao.textContent = produtos[i].nome + " - " + formatarPreco(produtos[i].preco);
+    select.appendChild(opcao);
+  }
+}
+
+function simular() {
+  let id = Number(document.getElementById("item").value);
+  let quantidade = Number(document.getElementById("quantidade").value);
+  let resultado = document.getElementById("resultado");
+
+  if (quantidade < 1 || isNaN(quantidade)) {
+    resultado.textContent = "Digite uma quantidade válida.";
+    return;
+  }
+
+  let escolhido = produtos.find(function (p) {
+    return p.id === id;
+  });
+
+  let conta = calcularTotal(escolhido.preco, quantidade);
+
+  if (quantidade >= 2) {
+    resultado.innerHTML =
+      "Desconto: " + formatarPreco(conta.desconto) + "<br>Total: " + formatarPreco(conta.total);
+  } else {
+    resultado.innerHTML = "Sem desconto com 1 peça.<br>Total: " + formatarPreco(conta.total);
+  }
+}
+
+if (document.getElementById("botao-calcular")) {
+  preencherSelect();
+  document.getElementById("botao-calcular").addEventListener("click", simular);
+}
