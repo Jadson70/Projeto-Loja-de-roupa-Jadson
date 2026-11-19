@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casual Style - Simulador</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Casual Style</h1>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="simulador.html">Simulador</a>
+      <a href="cadastro.html">Cadastro</a>
+      <a href="sobre.html">Sobre e dúvidas</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Simulador de compra</h2>
+    <p>Escolha o item e a quantidade. A cada 2 peças, a segunda tem 20% de desconto.</p>
+
+    <section class="caixa">
+      <label for="item">Item:</label>
+      <select id="item"></select>
+
+      <label for="quantidade">Quantidade:</label>
+      <input type="number" id="quantidade" value="1" min="1">
+
+      <button type="button" id="botao-calcular">Calcular</button>
+
+      <div id="resultado"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Casual Style - Trabalho escolar</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
