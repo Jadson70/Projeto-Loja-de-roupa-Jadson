@@ -100,3 +100,68 @@ if (document.getElementById("botao-calcular")) {
   preencherSelect();
   document.getElementById("botao-calcular").addEventListener("click", simular);
 }
+function validarFormulario() {
+  let nome = document.getElementById("nome").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let telefone = document.getElementById("telefone").value.trim();
+  let cidade = document.getElementById("cidade").value.trim();
+  let senha = document.getElementById("senha").value;
+  let tudoCerto = true;
+
+  document.getElementById("erro-nome").textContent = "";
+  document.getElementById("erro-email").textContent = "";
+  document.getElementById("erro-telefone").textContent = "";
+  document.getElementById("erro-cidade").textContent = "";
+  document.getElementById("erro-senha").textContent = "";
+
+  if (nome.length < 3) {
+    document.getElementById("erro-nome").textContent = "O nome precisa ter pelo menos 3 letras.";
+    tudoCerto = false;
+  }
+
+  if (email.indexOf("@") === -1 || email.indexOf(".") === -1) {
+    document.getElementById("erro-email").textContent = "Digite um e-mail válido.";
+    tudoCerto = false;
+  }
+
+  if (isNaN(telefone) || telefone.length < 10 || telefone.length > 11) {
+    document.getElementById("erro-telefone").textContent = "Telefone com 10 ou 11 números.";
+    tudoCerto = false;
+  }
+
+  if (cidade === "") {
+    document.getElementById("erro-cidade").textContent = "Preencha a cidade.";
+    tudoCerto = false;
+  }
+
+  if (senha.length < 6) {
+    document.getElementById("erro-senha").textContent = "A senha precisa ter 6 caracteres ou mais.";
+    tudoCerto = false;
+  }
+
+  return tudoCerto;
+}
+
+if (document.getElementById("formulario")) {
+  document.getElementById("formulario").addEventListener("submit", function (evento) {
+    evento.preventDefault();
+    let mensagem = document.getElementById("mensagem-final");
+
+    if (validarFormulario()) {
+      mensagem.style.color = "green";
+      mensagem.textContent = "Cadastro feito com sucesso!";
+      document.getElementById("formulario").reset();
+    } else {
+      mensagem.style.color = "red";
+      mensagem.textContent = "Corrija os erros acima.";
+    }
+  });
+}
+
+let perguntas = document.querySelectorAll(".pergunta");
+for (let i = 0; i < perguntas.length; i++) {
+  perguntas[i].addEventListener("click", function () {
+    let resposta = perguntas[i].nextElementSibling;
+    resposta.classList.toggle("aberta");
+  });
+}
